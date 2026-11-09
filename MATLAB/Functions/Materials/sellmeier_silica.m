@@ -1,5 +1,5 @@
 function [beta0,beta1,beta2] = sellmeier_silica(lambda0)
-    % Fused silica (Malitson Sellmeier). lam [um]; outputs: beta0 [rad/um], beta1 [fs/um], beta2 [fs^2/um]
+    % Fused silica (Malitson Sellmeier). lam [um]; outputs: beta0 [rad/um], beta1 [ns/um], beta2 [ns^2/um]
     
     c = 299792458; % um/us
     c = 1e-3*c; % um/ns

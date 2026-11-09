@@ -51,7 +51,7 @@
 /MATLAB/Functions/Plotting/Colormaps/tests/*
 !/.gitattributes
 !/.gitignore
-!/codes_root.m
+!/MATLAB/Functions/Basics/codes_root.m
 !/init_dir.m
 !/LICENSE
 !/MATLAB/Data/System configurations/Lattice configurations/14_ring.mat
