@@ -1,0 +1,125 @@
+# Public release allowlist. Everything else stays local by default.
+# To publish a new file, add its exact path below before staging it.
+/*
+!/MATLAB/
+/MATLAB/*
+!/MATLAB/Data/
+!/MATLAB/Functions/
+!/MATLAB/Operators/
+/MATLAB/Data/*
+/MATLAB/Functions/*
+/MATLAB/Operators/*
+!/MATLAB/Data/System configurations/
+!/MATLAB/Functions/Basics/
+!/MATLAB/Functions/Conserved quantities/
+!/MATLAB/Functions/Materials/
+!/MATLAB/Functions/Microcanonical gas/
+!/MATLAB/Functions/Mode solvers/
+!/MATLAB/Functions/Plotting/
+!/MATLAB/Functions/Propagators/
+!/MATLAB/Functions/Statistics/
+!/MATLAB/Functions/System configuration/
+!/MATLAB/Operators/Misc plots/
+!/MATLAB/Operators/Propagation/
+/MATLAB/Data/System configurations/*
+/MATLAB/Functions/Basics/*
+/MATLAB/Functions/Conserved quantities/*
+/MATLAB/Functions/Materials/*
+/MATLAB/Functions/Microcanonical gas/*
+/MATLAB/Functions/Mode solvers/*
+/MATLAB/Functions/Plotting/*
+/MATLAB/Functions/Propagators/*
+/MATLAB/Functions/Statistics/*
+/MATLAB/Functions/System configuration/*
+/MATLAB/Operators/Misc plots/*
+/MATLAB/Operators/Propagation/*
+!/MATLAB/Data/System configurations/Lattice configurations/
+!/MATLAB/Functions/Plotting/Colormaps/
+!/MATLAB/Functions/Propagators/DNLSE/
+!/MATLAB/Operators/Propagation/BPM/
+!/MATLAB/Operators/Propagation/DNLSE/
+/MATLAB/Data/System configurations/Lattice configurations/*
+/MATLAB/Functions/Plotting/Colormaps/*
+/MATLAB/Functions/Propagators/DNLSE/*
+/MATLAB/Operators/Propagation/BPM/*
+/MATLAB/Operators/Propagation/DNLSE/*
+!/MATLAB/Functions/Plotting/Colormaps/data/
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/
+!/MATLAB/Functions/Plotting/Colormaps/tests/
+/MATLAB/Functions/Plotting/Colormaps/data/*
+/MATLAB/Functions/Plotting/Colormaps/LICENSES/*
+/MATLAB/Functions/Plotting/Colormaps/tests/*
+!/.gitattributes
+!/.gitignore
+!/codes_root.m
+!/init_dir.m
+!/LICENSE
+!/MATLAB/Data/System configurations/Lattice configurations/14_ring.mat
+!/MATLAB/Data/System configurations/Lattice configurations/4_line.mat
+!/MATLAB/Data/System configurations/Lattice configurations/5_line.mat
+!/MATLAB/Data/System configurations/Lattice configurations/double_test.mat
+!/MATLAB/Data/System configurations/Lattice configurations/Jx_3x2.mat
+!/MATLAB/Data/System configurations/Lattice configurations/Jx_3x3.mat
+!/MATLAB/Data/System configurations/Lattice configurations/Jx_4x4.mat
+!/MATLAB/Data/System configurations/Lattice configurations/Jx_5x5.mat
+!/MATLAB/Data/System configurations/Lattice configurations/Jx_6x6.mat
+!/MATLAB/Data/System configurations/Lattice configurations/triple_test.mat
+!/MATLAB/Functions/Basics/degeneracy.m
+!/MATLAB/Functions/Basics/noiser.m
+!/MATLAB/Functions/Basics/system_hierarchy.m
+!/MATLAB/Functions/Conserved quantities/kerr_conservation.m
+!/MATLAB/Functions/Materials/sellmeier_silica.m
+!/MATLAB/Functions/Microcanonical gas/calculate_MC.m
+!/MATLAB/Functions/Microcanonical gas/calculate_RJ.m
+!/MATLAB/Functions/Microcanonical gas/compute_weights.m
+!/MATLAB/Functions/Microcanonical gas/marginals.m
+!/MATLAB/Functions/Microcanonical gas/mixed_moments.m
+!/MATLAB/Functions/Microcanonical gas/pearson_correlations.m
+!/MATLAB/Functions/Microcanonical gas/volume.m
+!/MATLAB/Functions/Mode solvers/eigk.m
+!/MATLAB/Functions/Mode solvers/laplacian_1d.m
+!/MATLAB/Functions/Plotting/Colormaps/COLORMAPS.txt
+!/MATLAB/Functions/Plotting/Colormaps/data/colorbrewer_schemes.json
+!/MATLAB/Functions/Plotting/Colormaps/data/external_palettes.mat
+!/MATLAB/Functions/Plotting/Colormaps/data/palette_catalog.json
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-CARTOColors.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-CC0.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-cividis.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-CMasher.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-cmcrameri-v1.5.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-cmcrameri.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-cmocean.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-CMRmap.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-ColorBrewer.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-Colorcet.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-Matplotlib.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-palettable.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-scicomap.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-slanCM.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-Vega.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-Wistia.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/LICENSE-Yorick.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/NOTICE-BIDS.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/NOTICE-CARTOColors-legacy.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/NOTICE-CARTOColors.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/NOTICE-ColorBrewer.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/NOTICE-fivethirtyeight.txt
+!/MATLAB/Functions/Plotting/Colormaps/LICENSES/NOTICE-Turbo.txt
+!/MATLAB/Functions/Plotting/Colormaps/ot_colormap.m
+!/MATLAB/Functions/Plotting/Colormaps/tests/test_colorbrewer_sampling.m
+!/MATLAB/Functions/Plotting/Colormaps/tests/test_ot_colormap.m
+!/MATLAB/Functions/Plotting/Colormaps/THIRD_PARTY_NOTICES.txt
+!/MATLAB/Functions/Plotting/plot_constrained_dynamics.m
+!/MATLAB/Functions/Plotting/plot_modal_dynamics.m
+!/MATLAB/Functions/Plotting/plot_thermodynamics.m
+!/MATLAB/Functions/Plotting/progress_bar.m
+!/MATLAB/Functions/Plotting/progress_points.m
+!/MATLAB/Functions/Propagators/DNLSE/dnlse.m
+!/MATLAB/Functions/Statistics/modal_statistics.m
+!/MATLAB/Functions/System configuration/lattice_config.m
+!/MATLAB/Operators/Misc plots/constrained_dynamics.m
+!/MATLAB/Operators/Misc plots/manifold_visualization.m
+!/MATLAB/Operators/Propagation/BPM/bpm_tz.m
+!/MATLAB/Operators/Propagation/BPM/bpm_xz.m
+!/MATLAB/Operators/Propagation/DNLSE/kerr_dnlse.m
+!/README.md

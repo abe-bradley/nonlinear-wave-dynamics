@@ -1,0 +1,200 @@
+COLORMAP DATA AND THIRD-PARTY NOTICES
+
+The ot_colormap interface supplies colors from the user's installed MATLAB
+or from the reviewed external tables distributed with this project. Palette
+designs remain credited to their creators. The new interface does not change
+the licenses of the external material. No license for the research project's
+own code is selected by this file.
+
+The per-palette catalog is:
+MATLAB/Functions/Plotting/Colormaps/data/palette_catalog.json
+The external RGB tables are:
+MATLAB/Functions/Plotting/Colormaps/data/external_palettes.mat
+Original license texts and source notices accompany this file in
+LICENSES/. They must travel with redistributed external data.
+
+COLLECTION PROVENANCE
+
+External tables were extracted from the local slanCM_Data.mat collection,
+whose SHA-256 is:
+84939c932b32cfe2496bd03a1cf99eb625bfbc3af076d3626c393524b9a17f9e
+That file is identical to the upstream collection at commit:
+1d398482a7992c621b4638f7a76411841982fd84
+Source: https://github.com/slandarer/MATLAB-200-colormaps
+
+Collection: 200 colormaps / MATLAB-200-colormaps.
+Author: Zhaoxu Liu / slandarer.
+Copyright (c) 2022-2026, Zhaoxu Liu / slandarer. All rights reserved.
+License: BSD 3-Clause; preserve LICENSE-slanCM.txt in full.
+
+The collection credit is additional to the original palette creators' credits.
+The public colormap package must omit the original full MAT-file and slanCM
+adapter archive. The new provider does not load them. Its external tables
+retain the existing 256-row RGB values.
+
+PACKAGING AND INTERFACE CHANGES
+
+- MATLAB-native names are resolved to installed MATLAB functions. Their
+  copied tables are omitted from external_palettes.mat.
+- The colorblind entry and its RGB data are omitted. Original slanCM ID 192
+  is absent; the remaining original IDs are not renumbered.
+- The interface, catalog, and data packaging were written for this project.
+  Name aliases and original numeric IDs are recorded in the catalog.
+- External tables retain their stored precision. The interface linearly
+  interpolates these tables to the requested number of colors, as slanCM did.
+- Native palettes follow installed MATLAB output at the requested length.
+  Their colors can vary with MATLAB release and need not reproduce the old
+  slanCM snapshots exactly.
+- Plotting code may reverse or apply power/square-root transformations to
+  returned colors. In particular, the trajectory plot reverses Colorcet's
+  thermal-2/bmy palette; correlation plots reverse CMasher's redshift palette.
+
+MATLAB-native palette data are generated at runtime. MATLAB is a separate
+MathWorks product and is not distributed by this project. The original local
+slanCM archive under Packages/slanCM_original and audit files under .temp are
+not part of the intended public release and are not covered by this external
+data packaging description. Do not publish those folders as part of it.
+
+ORIGINAL PALETTE SOURCES
+
+Matplotlib and original contributors
+https://github.com/matplotlib/matplotlib
+Preserve LICENSE-Matplotlib.txt and the applicable original notices below.
+Credits include the Matplotlib Development Team and individual designers.
+The 538 palette follows Cameron Davidson-Pilon's Matplotlib implementation
+of the FiveThirtyEight-inspired plotting style; see NOTICE-fivethirtyeight.txt.
+
+ColorBrewer
+Copyright (c) 2002 Cynthia Brewer, Mark Harrower, and The Pennsylvania State
+University. Source: https://colorbrewer2.org/
+Apache License 2.0; preserve LICENSE-ColorBrewer.txt and
+NOTICE-ColorBrewer.txt. Source-route adaptations include resampling control
+colors into the existing 256-row tables and palette aliases such as brewer.
+
+Yorick/Gist
+David H. Munro; Copyright (c) 1996 The Regents of the University of California.
+Preserve the full BSD-style LICENSE-Yorick.txt, including its disclaimer.
+Source route: Matplotlib's GIST/Yorick palette implementations.
+
+Vega
+University of Washington Interactive Data Lab and contributors.
+https://github.com/vega/vega
+BSD 3-Clause; preserve LICENSE-Vega.txt. Relevant categorical names include
+tab10, tab20, tab20b, and tab20c through Matplotlib's Vega-derived tables.
+
+Wistia
+jringenberg / Wistia. https://github.com/wistia/heatmap-palette
+MIT; preserve LICENSE-Wistia.txt.
+
+CMRmap
+Carey Rappaport. Copyright (c) 2002 Carey Rappaport. All rights reserved.
+https://www.mathworks.com/matlabcentral/fileexchange/2662-cmrmap-m
+Preserve LICENSE-CMRmap.txt and Matplotlib's source-route notice.
+
+cividis
+Jamie Nunez and collaborators; Battelle/PNNL.
+Copyright (c) 2017 Battelle Memorial Institute.
+https://github.com/pnnl/cmaputil
+Preserve LICENSE-cividis.txt exactly; these are custom permissive terms.
+
+BIDS / Matplotlib perceptually uniform palettes
+Nathaniel J. Smith, Stefan van der Walt, and Eric Firing where applicable.
+viridis, plasma, inferno, and magma.
+https://github.com/BIDS/colormap
+CC0; preserve LICENSE-CC0.txt and NOTICE-BIDS.txt. The BIDS CC0 statement
+applies to its original palettes, not its copied MATLAB parula table.
+
+Google Turbo
+Anton Mikhailov; Copyright 2019 Google LLC.
+https://gist.github.com/mikhailov-work/ee72ba4191942acecc03fe6da94fc73f
+Apache License 2.0; source notice retained in NOTICE-Turbo.txt. Turbo is
+generated through MATLAB by this interface; the original-source notice is
+retained for collection provenance rather than as a bundled Turbo RGB table.
+
+CMasher
+Ellert van der Velden. Copyright (c) 2019-2021 Ellert van der Velden.
+https://github.com/1313e/CMasher
+BSD 3-Clause; preserve LICENSE-CMasher.txt.
+Reference: van der Velden (2020), CMasher: Scientific colormaps for making
+accessible, informative and 'cmashing' plots, JOSS 5(46), 2004.
+https://doi.org/10.21105/joss.02004
+
+Scientific colour maps / cmcrameri
+Palette design: Fabio Crameri. Python packaging: Callum Rollo.
+https://www.fabiocrameri.ch/colourmaps/
+https://github.com/callumrollo/cmcrameri
+MIT; preserve LICENSE-cmcrameri.txt and LICENSE-cmcrameri-v1.5.txt.
+The bilbao and tokyo tables match historical cmcrameri v1.5 tables exactly,
+rather than current revised versions. Other collection aliases include
+bamo/bamO, broco/brocO, corko/corkO, romao/romaO, and rainbow-sc/batlow.
+
+cmocean
+Kristen M. Thyng and contributors. Copyright (c) 2015 Kristen M. Thyng.
+https://github.com/matplotlib/cmocean
+MIT; preserve LICENSE-cmocean.txt.
+
+Colorcet
+Peter Kovesi and HoloViz/Colorcet contributors.
+https://github.com/holoviz/colorcet
+Creative Commons Attribution 4.0 International; preserve LICENSE-Colorcet.txt,
+creator credit, source links, and descriptions of processing/modifications.
+https://creativecommons.org/licenses/by/4.0/
+Aliases in the collection include thermal-2 for bmy / linear_bmy_10_95_c78,
+cet_c1 for CET_C1, rainbow-iso for CET_I1, and rainbow-kov for rainbow.
+Reference: Kovesi (2015), Good Colour Maps: How to Design Them.
+https://arxiv.org/abs/1509.03700
+
+CARTOColors
+CARTO. https://github.com/CartoDB/CartoColor
+The original project's README publishes Creative Commons Attribution 4.0
+International terms; preserve NOTICE-CARTOColors.txt and the CC BY 4.0 text
+in LICENSE-CARTOColors.txt, plus this attribution and source link.
+https://creativecommons.org/licenses/by/4.0/
+The bold, prism2, and vivid tables contain the first ten categorical colors
+of their source palettes, omitting the final neutral color, repeated across
+256 samples. The name prism2 distinguishes it from MATLAB's prism palette.
+The legacy palettable source header cites CC BY 3.0 US. That source-route
+statement is preserved in NOTICE-CARTOColors-legacy.txt; it is not silently
+relabelled. The matching original-project source supplies the current CC BY
+4.0 statement used for this distribution's attribution record.
+
+palettable and scicomap collection routes
+Matt Davis / palettable: https://github.com/jiffyclub/palettable
+Thomas Bury / scicomap: https://github.com/ThomasBury/scicomap
+Both implementations are MIT licensed; preserve LICENSE-palettable.txt and
+LICENSE-scicomap.txt. These Python packages are not runtime dependencies.
+
+LICENSE SCOPE
+
+Retain each applicable copyright notice, conditions, and disclaimer with
+redistributed material. Preserve source links and identify modifications
+where required. Do not imply endorsement by an author, institution, project,
+or MathWorks. Academic citations complement these notices and do not replace
+the original license terms. This file records the reviewed distribution
+route; it is not a legal guarantee about every possible reuse.
+
+The notices concern the external palette data and its source contributions.
+The private archive's demos, screenshots, backups, and complete original
+MAT-file are not being redistributed through this implementation.
+
+DIRECT COLORBREWER COUNT-SPECIFIC TABLES
+
+The additional data/colorbrewer_schemes.json is extracted directly from
+Axis Maps' official ColorBrewer source, not from Stephen Cobeldick's BrewerMap
+implementation. No BrewerMap code is incorporated into the new sampler.
+This product includes color specifications and designs developed by Cynthia
+Brewer (https://colorbrewer2.org/).
+Copyright (c) 2002 Cynthia Brewer, Mark Harrower, and The Pennsylvania State
+University. The web source is maintained by Axis Maps.
+Preserve LICENSES/LICENSE-ColorBrewer.txt (Apache License 2.0) and
+LICENSES/NOTICE-ColorBrewer.txt when distributing these tables.
+
+Source: https://raw.githubusercontent.com/axismaps/colorbrewer/7d135fc4e19eda73f2eb1bf55fcdf4a04fe4881f/colorbrewer_schemes.js
+Commit: 7d135fc4e19eda73f2eb1bf55fcdf4a04fe4881f
+Original source SHA-256: 52e6a6edbbe4bbb95467cb84fb7db8fcbb1d6d219c975851c4c9d79334f00a41
+
+Extraction changes: RGB strings converted to integer triples in JSON;
+scheme types expanded to readable names; original designed counts and color
+ordering retained. Runtime conversion divides the RGB integers by 255.
+Our independent interpolation, category cycling, and N=0/1/2 extensions are
+documented in COLORMAPS.txt. None of this changes the ColorBrewer license.

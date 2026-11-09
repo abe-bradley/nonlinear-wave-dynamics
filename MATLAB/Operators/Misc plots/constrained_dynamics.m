@@ -1,0 +1,101 @@
+clear
+clc
+
+%% Lattice definition
+folder_path = fullfile(codes_root(),'MATLAB','Data', ...
+    'System configurations','Lattice configurations');
+file_name = 'Jx_3x3';
+file_path = fullfile(folder_path,file_name);
+
+[H,B] = lattice_config(false,file_path);
+
+M = length(H);
+N_sub = length(B);
+
+sysk = eigk(false,H,B); % Kerr properties
+
+%% Distances
+zi = 0;
+zf = 100;
+Nz = 1000;
+z = linspace(zi,zf,Nz);
+
+N_end = 600; % number of late propagation points used in the ensemble
+I_end = Nz - N_end + 1:Nz;
+
+%% Initial condition parameters
+% Ensemble parameters
+N_init = 25; % number of initial conditions
+SNR = 30; % noise
+
+% Excitation parameters
+P0 = {7}; % sublattice powers
+exc = {1:4}; % local mode indices excited
+
+%% Intitial conditions for subsystem eigenstates
+% Occupations
+J0.sub = zeros(M,1);
+for ss = 1:N_sub
+    J0.sub(sysk.B{ss}(exc{ss})) = P0{ss}/length(exc{ss}); % occupations
+end
+
+% Complex amplitudes
+c0.sub = zeros(M,N_init);
+for nn = 1:N_init
+    c0.sub(:,nn) = noiser(sqrt(J0.sub),SNR,true);
+end
+
+% Basis transformation to site-local space
+a0 = sysk.sub.psi*c0.sub;
+
+% Full-system modal representation
+c0.full = sysk.full.psi\a0;
+J0.full = mean(abs(c0.full).^2,2);
+
+%% Propagation loop
+a = zeros(M,Nz,N_init);
+
+opts = odeset('RelTol',1e-12,'AbsTol',1e-12); % ODE tolerance options
+
+progress_fig = progress_bar(0,N_init,[]);
+for nn = 1:N_init
+    [~,am] = ode45(@(Z,a) dnlse(Z,a,H), z, a0(:,nn), opts);
+    a(:,:,nn) = am.';
+
+    progress_fig = progress_bar(nn,N_init,progress_fig);
+end
+
+%% Modal basis transformation
+c.full = reshape(sysk.full.psi\reshape(a,M,[]),M,Nz,N_init);
+c.sub = reshape(sysk.sub.psi\reshape(a,M,[]),M,Nz,N_init);
+
+J.full = abs(c.full).^2;
+J.sub = abs(c.sub).^2;
+
+%% Equilibrium check
+[U,P] = kerr_conservation(true,z,c,sysk);
+
+plot_modal_dynamics(N_end,z,c,sysk)
+
+statistics.full = modal_statistics(J.full(:,I_end,:));
+statistics.sub = repmat(statistics.full,0,1);
+for ss = 1:N_sub
+    statistics.sub(ss) = modal_statistics(J.sub(sysk.B{ss},I_end,:));
+end
+
+plot_thermodynamics(statistics,U,P,sysk)
+
+%% Animate occupations and relative phases (rerun this section to replay)
+% The reference uses the ensemble-mean initial P and linear U = epsilon*J,
+% including every mode. Only J1:J3 are displayed; omitted modes are free,
+% so larger lattices generally give a projected volume instead of a plane.
+% Kerr dynamics conserve total energy, so linear U can fluctuate away from
+% this reference region. Trajectories retain their actual J1:J3 values.
+if exist('dynamics_figure','var') && isgraphics(dynamics_figure)
+    delete(dynamics_figure)
+end
+dynamics_figure = plot_constrained_dynamics(z,c.full,sysk.full.epsilon, ...
+    'TailLength',50, ...        % propagation-distance history retained
+    'PlaybackDuration',30, ... % seconds for one traversal of the data
+    'FrameRate',30, ...
+    'RotateOccupations',true); % one full turn over the propagation interval
